@@ -1,0 +1,10 @@
+[Unit]
+Description=FluffyProtect
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/noarch
+ExecStart=gunicorn -w 1 fprotect:app
+
+[Install]
+WantedBy=default.target
