@@ -107,7 +107,7 @@ $ gunicorn -w 1 fprotect:app
 ```
 
 > Note that **only one worker is allowed**. Otherwise FluffyProtect will return invalid invite links.
-You can create a systemd service for auto-starting. An example systemd user service is included in the above `fprotect.service`.
+You can create a systemd service for auto-starting. An example systemd service file is included in the above `fprotect.service`.
 
 With FluffyProtect up and running, browse your redirection URL. You should see the CAPTCHA that you just set; after solving the CAPTCHA, you should be redirected to your Telegram Group.
 
