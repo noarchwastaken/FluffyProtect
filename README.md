@@ -90,7 +90,7 @@ location /<YOUR BOT API KEY> {
 }
 ```
 
-If you want FluffyProtect to work in multiple groups of yours, just repeat [Making FluffyProtect work for your group](#Making FluffyProtect work for your group) and add corresponding `location` in your Nginx configuration.
+If you want FluffyProtect to work in multiple groups of yours, just repeat [Making FluffyProtect work for your group](#making-fluffyprotect-work-for-your-group) and add corresponding `location` in your Nginx configuration.
 
 In the "Firewall" tab in Cloudflare control panel, create custom firewall rules that matches the URL of redirection. Make it always "JS Challenge" or "Challenge" depending on your threat model.
 
