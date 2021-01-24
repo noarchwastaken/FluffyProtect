@@ -5,13 +5,13 @@ Telegram group anti-spam for humans.
 
 ## Background
 
-"Traditional" Telegram anti-spam bots lets new members click on a message, usually sent directly in the group it's operating in.
+"Traditional" Telegram anti-spam bots lets new members click on a message, usually sent directly in the group that it's operating in.
 
 But then the bot itself becomes the biggest spam: in large groups with frequent joins, those "join" messages are literally flushing actual messages away.
 
 Even with the verification done in private chat, the counter-intuitive experience and the "command" button in the message bar is just kind of out-of-place.
 
-Most importantly, those bots are mostly not self-hosted, meaning the bot owner is able to use the bot to harm the group.
+Most importantly, those bots are mostly not fully self-hosted, meaning that you must trust the person hosting the bot.
 
 FluffyProtect is a creative solution for this problem: It does nothing in the group itself, but rather relies on external captcha services, like Cloudflare's hCaptcha.
 
@@ -43,7 +43,7 @@ Of course, you need to create a bot using [@BotFather](https://t.me/BotFather).
 
 For simplicity, the API key is hard-coded into FluffyProtect.
 
-In `fprotect.py`, fill in your API key in `API_KEY`.
+In `fprotect.py`, fill your API key in `API_KEY`.
 
 
 ## Running
@@ -90,7 +90,7 @@ location /<YOUR BOT API KEY> {
 }
 ```
 
-If you want FluffyProtect to work in multiple groups of yours, just repeat [Making FluffyProtect work for your group](#making-fluffyprotect-work-for-your-group) and add corresponding `location` in your Nginx configuration.
+If you want FluffyProtect to work in multiple groups of yours, just repeat [Making FluffyProtect work for your group](#making-fluffyprotect-work-for-your-group) and add corresponding `location` blocks in your Nginx configuration.
 
 In the "Firewall" tab in Cloudflare control panel, create custom firewall rules that matches the URL of redirection. Make it always "JS Challenge" or "Challenge" depending on your threat model.
 
@@ -112,21 +112,3 @@ You can create a systemd service for auto-starting. An example systemd user serv
 With FluffyProtect up and running, browse your redirection URL. You should see the CAPTCHA that you just set; after solving the CAPTCHA, you should be redirected to your Telegram Group.
 
 After joining the group, the invite link that you just used is replaced by a new one, which must be requested in the same way above.
-
-## License
-
-```
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-                    Version 2, December 2004
-
- Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
-
- Everyone is permitted to copy and distribute verbatim or modified
- copies of this license document, and changing it is allowed as long
- as the name is changed.
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
-  0. You just DO WHAT THE FUCK YOU WANT TO.
-```
