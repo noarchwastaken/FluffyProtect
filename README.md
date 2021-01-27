@@ -2,6 +2,8 @@
 
 Telegram group anti-spam for humans.
 
+[中文说明](/README-zh.md)
+
 
 ## Background
 
