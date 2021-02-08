@@ -37,7 +37,7 @@ git clone https://github.com/noarchwastaken/FluffyProtect
 
 使用 `pip` 或系统自带的包管理器安装依赖。
 
-当然，你还需要使用 [@BotFather](https://t.me/BotFather) 创建一个bot.
+当然，你还需要使用 [@BotFather](https://t.me/BotFather) 创建一个bot. 记下 @BotFather 给你的 API key.
 
 
 ## 运行
@@ -49,6 +49,8 @@ $ FPROTECT_API_KEY=<你的 BOT API KEY> ./fprotect.py
 ```
 
 你应该能看见 Flask 监听着`127.0.0.1:5000`.
+
+注意，你需要像上面的命令一样将你的 bot API key 通过环境变量的方式告诉 FluffyProtect.
 
 退出程序，继续下一步。
 
