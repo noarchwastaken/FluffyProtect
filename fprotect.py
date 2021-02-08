@@ -24,6 +24,7 @@ API_LINK = 'https://api.telegram.org/bot{}/'.format(API_KEY)
 
 app = Flask(__name__)
 
+
 @app.route('/' + API_KEY, methods=['POST'])
 def listen_for_updates():
     update = request.get_json()
@@ -57,7 +58,7 @@ def query_api(method, chat_id):
         # Raise Exception with error given by Telegram
         raise Exception(api_response['description'])
     else:
-        raise Exception('Unexpected error')    
+        raise Exception('Unexpected error')
 
 
 def get_link(chat_id):
