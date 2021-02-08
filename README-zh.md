@@ -39,19 +39,13 @@ git clone https://github.com/noarchwastaken/FluffyProtect
 
 当然，你还需要使用 [@BotFather](https://t.me/BotFather) 创建一个bot.
 
-### 硬编码 API 密钥
-
-为简单起见，你需要将 Bot API 密钥硬编码进 FluffyProtect.
-
-在 `fprotect.py` 中，用你的API密钥替换 `API_KEY`.
-
 
 ## 运行
 
 为了测试这之前的操作，运行：
 
 ```
-./fprotect.py
+$ FPROTECT_API_KEY=<你的 BOT API KEY> ./fprotect.py
 ```
 
 你应该能看见 Flask 监听着`127.0.0.1:5000`.
@@ -100,13 +94,12 @@ location /<YOUR BOT API KEY> {
 
 ### systemd 服务，以及 Gunicorn
 
-当每一层的反向代理都设置完成后，为了更好的性能，你现在可以用 Gunicorn 运行 FluffyProtect:
+当每一层的反向代理都设置完成后，为了多进程和更好的性能，你现在可以用 Gunicorn 运行 FluffyProtect:
 
 ```
-$ gunicorn -w 1 fprotect:app
+$ FPROTECT_API_KEY=<你的 BOT API KEY> gunicorn -w 4 fprotect:app
 ```
 
-> 注意**只能运行一个进程**，否则 FluffyProtect 将返回无效的邀请链接。
 你可以参考 `fprotect.service` 创建一个 systemd 服务来自动启动。
 
 启动并运行 FluffyProtect 后，访问你的重定向 URL, 应该能看见刚才设置的验证码。在输入验证码之后，你应该会被重定向到你的 Telegram 群组。

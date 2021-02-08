@@ -39,13 +39,7 @@ $ git clone https://github.com/noarchwastaken/FluffyProtect
 
 You can install the dependencies using `pip` or your system package manager.
 
-Of course, you need to create a bot using [@BotFather](https://t.me/BotFather).
-
-### Hard-coding the API key
-
-For simplicity, the API key is hard-coded into FluffyProtect.
-
-In `fprotect.py`, fill your API key in `API_KEY`.
+Of course, you need to create a bot using [@BotFather](https://t.me/BotFather). Write down the API key that @BotFather gave you.
 
 
 ## Running
@@ -53,10 +47,12 @@ In `fprotect.py`, fill your API key in `API_KEY`.
 To test that everything works up to this point, run:
 
 ```
-$ ./fprotect.py
+$ FPROTECT_API_KEY=<YOUR BOT API KEY> ./fprotect.py
 ```
 
 You should see Flask listening on `127.0.0.1:5000`.
+
+Note that you have to pass your bot API key using an environment variable, like the command above.
 
 Quit the program, and let's set more things up.
 
@@ -102,13 +98,12 @@ This will prevent Cloudflare from challenging Telegram WebHook requests, and all
 
 ### systemd service, and Gunicorn
 
-With every layer of reverse proxy set-up, you can now run FluffyProtect with Gunicorn for better performance:
+With every layer of reverse proxy set-up, you can now run FluffyProtect with Gunicorn for multi-processing and better performance:
 
 ```
-$ gunicorn -w 1 fprotect:app
+$ FPROTECT_API_KEY=<YOUR BOT API KEY> gunicorn -w 4 fprotect:app
 ```
 
-> Note that **only one worker is allowed**. Otherwise FluffyProtect will return invalid invite links.
 You can create a systemd service for auto-starting. An example systemd service file is included in the above `fprotect.service`.
 
 With FluffyProtect up and running, browse your redirection URL. You should see the CAPTCHA that you just set; after solving the CAPTCHA, you should be redirected to your Telegram Group.
