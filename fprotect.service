@@ -4,6 +4,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/usr/local/bin
+Environment="<YOUR BOT API KEY>"
 ExecStart=gunicorn -w 1 fprotect:app
 User=nobody
 Group=nobody
